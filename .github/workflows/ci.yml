@@ -1,0 +1,15 @@
+name: CI
+
+# workflow_dispatch のみにして、検証中に Actions 実行時間を消費しないようにする
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show context
+        run: |
+          echo "repository: ${{ github.repository }}"
+          echo "visibility: ${{ github.event.repository.visibility }}"
